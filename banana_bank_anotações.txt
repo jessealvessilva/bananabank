@@ -1,0 +1,7 @@
+Senha do banco de dados postgree:  postgres
+User Name : postgres
+Porta : 5432
+
+
+
+mix phx.server
