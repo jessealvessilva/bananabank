@@ -7,9 +7,8 @@ defmodule BananaBank.Users.Create do
     params
     |> User.changeset()
     |> Repo.insert()
-    |> handle_insert()
+
   end
 
-  defp handle_insert({:ok, user}), do: user
-  defp handle_insert({:erro, changeset}), do: changeset
+
 end
