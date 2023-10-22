@@ -28,12 +28,16 @@ defmodule BananaBank.Users.User do
     |> add_password_hash()
   end
 
-  def add_password_hash(%Changeset{valid?: true, changes: %{password: password}} = changeset) do
+  defp add_password_hash(%Changeset{valid?: true, changes: %{password: password}} = changeset) do
 
-    change(changeset, Pbkdf2.hash_pwd_salt(password))
+    # changes = %{password: Pbkdf2.hash_pwd_salt(password)}
+
+    change(changeset, %{password_hash: Pbkdf2.hash_pwd_salt(password)})
+
+    # change( changeset , Pbkdf2.hash_pwd_salt(password))
   end
 
-  def add_password_hash(changeset), do: changeset
+  defp add_password_hash(changeset), do: changeset
 
 
 end
