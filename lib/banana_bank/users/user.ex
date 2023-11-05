@@ -1,13 +1,13 @@
 defmodule BananaBank.Users.User do
-
   use    Ecto.Schema
   import Ecto.Changeset
-
 
   alias Ecto.Changeset
 
   @required_params [:name, :password, :email, :cep]
 
+  # @derive{Jason.Encoder, only: [:name]}
+  @derive{Jason.Encoder, except: [:__meta__]}
   schema "users" do
     field :name, :string
     field :password, :string, virtual: true
