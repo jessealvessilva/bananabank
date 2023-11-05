@@ -21,7 +21,15 @@ defmodule BananaBankWeb.UsersController do
       |> put_status(:ok)
       |> render(:get, user: user)
     end
+  end
 
+  def update(conn, params) do
+    with {:ok, %User{} = user } <- Users.update(params) do
+      # IO.inspect( " Dados do usuário : #{user} " )
+      conn
+      |> put_status(:ok)
+      |> render(:update, user: user)
+    end
   end
 
 end
